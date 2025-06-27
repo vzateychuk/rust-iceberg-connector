@@ -57,14 +57,13 @@ Deployment:
 ## 🗂️ 4. Project Module Structure
 ```bash
 src/
-├── lib.rs
+├── lib.rs                   # Entry point for library code
 ├── main.rs                  # REST/gRPC server
 ├── api/                     # HTTP/gRPC endpoints
 │   ├── mod.rs
 │   ├── rest.rs              # Actix or Warp
 │   └── grpc.rs              # tonic gRPC
 ├── ingest/                  # Core logic (reusable)
-│   └── mod.rs
 ├── iceberg_writer/          # Iceberg logic
 ├── transform/               # Optional schema validation/transforms
 tests/
@@ -74,12 +73,12 @@ tests/
 ```
 
 ## ✅ 5. Development plan
-| Step | Description                                        | Tool                             |
-| ---- | -------------------------------------------------- | -------------------------------- |
-| 1    | Create Rust library scaffold                       | `cargo new --lib connector_lib`  |
-| 2    | Add REST API via `actix-web` or gRPC via `tonic`   | `actix-web` or `tonic`           |
-| 3    | Add CloudEvent deserialization (`cloudevents-sdk`) | `cloudevents-sdk`                |
-| 4    | Implement real-time write to Apache Iceberg        | `iceberg-writer` module          |
-| 5    | Write unit & e2e tests (tokio-based)               | `cargo test`                     |
-| 6    | Containerize with Docker                           | `Dockerfile`, `entrypoint.sh`    |
-| 7    | Deploy to OpenShift/Kubernetes                     | Helm chart or OpenShift template |
+| Step | Description                                        | Tool                                |
+| ---- | -------------------------------------------------- | ----------------------------------- |
+| 1    | Create Rust library scaffold                       | `cargo new --lib iceberg_connector` |
+| 2    | Add REST API via `actix-web` or gRPC via `tonic`   | `actix-web` or `tonic`              |
+| 3    | Add CloudEvent deserialization (`cloudevents-sdk`) | `cloudevents-sdk`                   |
+| 4    | Implement real-time write to Apache Iceberg        | `iceberg-writer` module             |
+| 5    | Write unit & e2e tests (tokio-based)               | `cargo test`                        |
+| 6    | Containerize with Docker                           | `Dockerfile`, `entrypoint.sh`       |
+| 7    | Deploy to OpenShift/Kubernetes                     | Helm chart or OpenShift template    |
